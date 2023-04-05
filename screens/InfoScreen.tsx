@@ -5,6 +5,8 @@ import {StackParamList, pokeType} from '../types';
 
 type Props = NativeStackScreenProps<StackParamList, 'Info'>;
 
+type Nav = Props;
+
 type State = {
   data: pokeType;
 };

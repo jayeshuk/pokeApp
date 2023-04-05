@@ -1,0 +1,54 @@
+import 'react-native';
+import React from 'react';
+// import App from '../screens/Home';
+import renderer from 'react-test-renderer';
+import {fireEvent, render, waitFor} from '@testing-library/react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Navigation, RootStackParamList} from '../App';
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Nav = Navigation<'Home'>['navigation'];
+type Params = Navigation<'Home'>['route'];
+const navigation = {navigate: jest.fn(), goBack: jest.fn()} as Partial<Nav>;
+const route = {params: undefined} as Params;
+const props = {navigation, route} as Navigation<'Home'>;
+it('renders correctly', () => {
+  const tree = render(<App {...props} />);
+  expect(tree).toMatchSnapshot();
+});
+it('random button pressed', async () => {
+  const tree = render(<App {...props} />);
+  expect(tree).toBeDefined();
+  const mainView = tree.getByTestId('Background');
+  const random_btn = tree.getByTestId('random_btn');
+  expect(mainView).toBeDefined();
+  expect(random_btn).toBeDefined();
+  fireEvent.press(random_btn);
+  waitFor(() => {
+    expect(tree.getByTestId('loader')).toBeTruthy();
+  });
+  waitFor(() => {
+    expect(navigation.navigate).toBeCalled();
+  });
+});
+it('working text input ', async () => {
+  const tree = render(<App {...props} />);
+  const text_input = tree.getByTestId('text_input');
+  fireEvent.changeText(text_input, '1234');
+  waitFor(() => {
+    expect(text_input.props.value).toBe('1234');
+  });
+});
+it('search button pressed', async () => {
+  const tree = render(<App {...props} />);
+  const search_btn = tree.getByTestId('search_btn');
+  expect(search_btn).toBeDefined();
+  const text_input = tree.getByTestId('text_input');
+  fireEvent.changeText(text_input, '2442938');
+  fireEvent.press(search_btn);
+  waitFor(() => {
+    expect(tree.getByTestId('loader')).toBeTruthy();
+  });
+  waitFor(() => {
+    expect(navigation.navigate).toBeCalledWith('Info', {asteroid: {}});
+  });
+});

@@ -1,5 +1,7 @@
 import type {RouteProp} from '@react-navigation/native';
 import type {StackNavigationProp} from '@react-navigation/stack';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type HomeScreenProps = {
   route: {
@@ -24,7 +26,10 @@ export type StackParamList = {
   Info: {info: pokeType};
 };
 
-export type HomeScreenNavigationProp = StackNavigationProp<
+export type Navigation<Screen extends keyof StackParamList> =
+  NativeStackScreenProps<StackParamList, Screen>;
+
+export type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
   'Home'
 >;

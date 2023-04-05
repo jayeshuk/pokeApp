@@ -19,21 +19,21 @@ import {
 
 // type Props = StackScreenProps<StackParamList, 'Home', 'MyStack'>;
 
-// type Props = {
-//   route: HomeScreenRouteProp;
-//   navigation: HomeScreenNavigationProp;
-// };
 type Props = {
-  route: {
-    params: undefined;
-    name: string;
-    key: any;
-  };
-  navigation: {
-    navigate: Function;
-    goBack: Function;
-  }; // Use "any" type for simplicity in this example
+  route: HomeScreenRouteProp;
+  navigation: HomeScreenNavigationProp;
 };
+// type Props = {
+//   route: {
+//     params: undefined;
+//     name: string;
+//     key: any;
+//   };
+//   navigation: {
+//     navigate: Function;
+//     goBack: Function;
+//   }; // Use "any" type for simplicity in this example
+// };
 type State = {
   inputValue: string;
 };
@@ -64,7 +64,7 @@ class HomeScreen extends Component<Props, State> {
     };
 
     await axios(config).then((response: AxiosResponse) => {
-      console.log(response.data);
+      // console.log(response.data);
       const picked = (({id, name, weight, base_experience}) => ({
         id,
         name,
@@ -77,7 +77,7 @@ class HomeScreen extends Component<Props, State> {
 
   handleClear = () => {
     this.setState({inputValue: ''});
-    console.log('PROPS', this.props.navigation);
+    // console.log('PROPS', this.props.navigation);
   };
 
   render() {
