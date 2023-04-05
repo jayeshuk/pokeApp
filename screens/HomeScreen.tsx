@@ -11,29 +11,13 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackScreenProps} from '@react-navigation/stack';
 import axios, {AxiosResponse} from 'axios';
 
-import {
-  HomeScreenNavigationProp,
-  HomeScreenRouteProp,
-  StackParamList,
-} from '../types';
-
-// type Props = StackScreenProps<StackParamList, 'Home', 'MyStack'>;
+import {HomeScreenNavigationProp, HomeScreenRouteProp} from '../types';
 
 type Props = {
   route: HomeScreenRouteProp;
   navigation: HomeScreenNavigationProp;
 };
-// type Props = {
-//   route: {
-//     params: undefined;
-//     name: string;
-//     key: any;
-//   };
-//   navigation: {
-//     navigate: Function;
-//     goBack: Function;
-//   }; // Use "any" type for simplicity in this example
-// };
+
 type State = {
   inputValue: string;
 };
@@ -45,13 +29,6 @@ class HomeScreen extends Component<Props, State> {
       inputValue: '',
     };
   }
-
-  // componentDidMount() {
-  //   const {name, age} = this.props;
-  //   this.setState({
-  //     message: `Hello, ${name}! You are ${age} years old.`,
-  //   });
-  // }
 
   handleChange = (text: string) => {
     this.setState({inputValue: text});

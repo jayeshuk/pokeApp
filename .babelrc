@@ -1,3 +1,8 @@
 {
   // "presets": ["react-native"]
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  }
 }

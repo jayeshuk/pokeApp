@@ -1,58 +1,19 @@
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react-native';
+import {render, fireEvent, waitFor} from '@testing-library/react-native';
 import axios from 'axios';
 import HomeScreen from '../HomeScreen';
-
-import type {RouteProp} from '@react-navigation/native';
-import type {StackNavigationProp} from '@react-navigation/stack';
-
-import {
-  HomeScreenNavigationProp,
-  HomeScreenRouteProp,
-  Navigation,
-} from '../../types';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Navigation} from '../../types';
 
 jest.mock('axios');
 
-// type Props = {
-//   route: {
-//     params: undefined;
-//     name: string;
-//     key: any;
-//   };
-//   navigation: {
-//     navigate: Function;
-//     goBack: Function;
-//   }; // Use "any" type for simplicity in this example
-// };
-
-type Props = {
-  route: HomeScreenRouteProp;
-  navigation: HomeScreenNavigationProp;
-};
-
-// type Props = {
-//   route: RouteProp<StackParamList, 'Home'>;
-//   navigation: NativeStackNavigationProp<StackParamList>;
-// };
-
-// const props: Props = {
-//   route: {
-//     params: undefined,
-//     name: 'Home',
-//     key: 'Home-Ke6tdVC--ulQsrORuokft',
-//   },
-//   navigation: {
-//     navigate: jest.fn(),
-//     goBack: jest.fn(),
-//   } as Partial<Nav>,
-// };
-
 type Nav = Navigation<'Home'>['navigation'];
-type Params = Navigation<'Home'>['route'];
-const navigation = {navigate: jest.fn(), goBack: jest.fn()} as Partial<Nav>;
-const route = {params: undefined} as Params;
+type Route = Navigation<'Home'>['route'];
+
+const navigation = {
+  navigate: jest.fn(),
+  goBack: jest.fn(),
+} as Partial<Nav>;
+const route = {params: undefined} as Route;
 const props = {navigation, route} as Navigation<'Home'>;
 
 describe('HomeScreen', () => {
@@ -74,7 +35,6 @@ describe('HomeScreen', () => {
 
   // Simulate a successful API call and check navigation to InfoScreen
   it('should navigate to Info screen with picked Pokemon', async () => {
-    const navigate = jest.fn();
     const {getByPlaceholderText, getByText} = render(<HomeScreen {...props} />);
 
     const input = getByPlaceholderText('Enter Poke Name');
@@ -92,11 +52,13 @@ describe('HomeScreen', () => {
     fireEvent.changeText(input, 'Pikachu');
     fireEvent.press(submitButton);
 
-    expect(axios).toHaveBeenCalledWith({
-      method: 'get',
-      url: 'https://pokeapi.co/api/v2/pokemon/ditto',
+    waitFor(() => {
+      expect(axios).toHaveBeenCalledWith({
+        method: 'get',
+        url: 'https://pokeapi.co/api/v2/pokemon/ditto',
+      });
     });
-    expect(navigate).toHaveBeenCalledWith('Info', {
+    expect(navigation.navigate).toHaveBeenCalledWith('Info', {
       info: {
         id: 25,
         name: 'pikachu',

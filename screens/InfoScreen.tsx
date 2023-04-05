@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, SafeAreaView, StyleSheet} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {StackParamList, pokeType} from '../types';
+import {
+  pokeType,
+  InfoScreenNavigationProp,
+  InfoScreenRouteProp,
+  StackParamList,
+} from '../types';
 
-type Props = NativeStackScreenProps<StackParamList, 'Info'>;
-
-type Nav = Props;
+// type Props = NativeStackScreenProps<StackParamList, 'Info'>;
+type Props = {
+  route: InfoScreenRouteProp;
+  navigation: InfoScreenNavigationProp;
+};
 
 type State = {
   data: pokeType;

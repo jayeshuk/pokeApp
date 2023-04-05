@@ -1,22 +1,13 @@
 import type {RouteProp} from '@react-navigation/native';
 import type {StackNavigationProp} from '@react-navigation/stack';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-type HomeScreenProps = {
-  route: {
-    params: undefined;
-    name: string;
-  };
-  navigation: {
-    navigate: Function;
-    goBack: Function;
-  }; // Use "any" type for simplicity in this example
-};
+import type {
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
 export type pokeType = {
-  name: string | undefined;
   id: number | undefined;
+  name: string | undefined;
   weight: number | undefined;
   base_experience: number | undefined;
 };

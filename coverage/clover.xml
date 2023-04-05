@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680691577830" clover="3.2.0">
-  <project timestamp="1680691577830" name="All files">
-    <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5" elements="24" coveredelements="20" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
+<coverage generated="1680700078272" clover="3.2.0">
+  <project timestamp="1680700078273" name="All files">
+    <metrics statements="20" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8" elements="30" coveredelements="26" complexity="0" loc="20" ncloc="20" packages="1" files="2" classes="2"/>
     <file name="HomeScreen.tsx" path="/home/jayesh/Desktop/Assignments/pokeApp/screens/HomeScreen.tsx">
-      <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="43" count="4" type="stmt"/>
-      <line num="44" count="4" type="stmt"/>
-      <line num="56" count="4" type="stmt"/>
-      <line num="57" count="3" type="stmt"/>
-      <line num="60" count="4" type="stmt"/>
-      <line num="61" count="1" type="stmt"/>
-      <line num="66" count="1" type="stmt"/>
-      <line num="68" count="0" type="stmt"/>
-      <line num="74" count="0" type="stmt"/>
-      <line num="78" count="4" type="stmt"/>
+      <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
+      <line num="27" count="4" type="stmt"/>
+      <line num="28" count="4" type="stmt"/>
+      <line num="33" count="4" type="stmt"/>
+      <line num="34" count="3" type="stmt"/>
+      <line num="37" count="4" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="55" count="4" type="stmt"/>
+      <line num="56" count="1" type="stmt"/>
+      <line num="61" count="8" type="stmt"/>
       <line num="79" count="1" type="stmt"/>
-      <line num="84" count="8" type="stmt"/>
-      <line num="102" count="1" type="stmt"/>
-      <line num="123" count="1" type="stmt"/>
+    </file>
+    <file name="InfoScreen.tsx" path="/home/jayesh/Desktop/Assignments/pokeApp/screens/InfoScreen.tsx">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="24" count="2" type="stmt"/>
+      <line num="30" count="2" type="stmt"/>
+      <line num="31" count="2" type="stmt"/>
+      <line num="42" count="4" type="stmt"/>
+      <line num="43" count="4" type="stmt"/>
+      <line num="57" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
